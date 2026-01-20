@@ -2,74 +2,81 @@
 
 Here is a comprehensive README.md file for your project. You can save this text as a file named README.md in your project directory.
 
-🎫 Intelligent Customer Support Ticket Classifier
-📖 Project Description
-This project implements an end-to-end Machine Learning pipeline designed to automate the initial handling of customer support tickets. By leveraging Natural Language Processing (NLP) and Machine Learning techniques, the system analyzes raw ticket text to:
+# 🎫 Customer Support Ticket Classifier
 
-Classify the Issue Type (e.g., Technical, Billing, Product).
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Scikit-Learn](https://img.shields.io/badge/Library-Scikit--Learn-orange)
+![Gradio](https://img.shields.io/badge/UI-Gradio-purple)
+![License](https://img.shields.io/badge/License-MIT-green)
 
-Predict the Urgency Level (e.g., Critical, High, Medium, Low).
+An end-to-end Machine Learning pipeline designed to automate the triage of customer support tickets. This system processes raw text to classify issues, assess urgency, and extract key entities, reducing manual workload for support teams.
 
-Extract Key Entities (Product names, dates, complaint keywords, and Order IDs).
+---
 
-This solution aims to reduce manual triage time and ensure critical issues are flagged immediately.
+## 📋 Table of Contents
+- [Project Overview](#-project-overview)
+- [Key Features](#-key-features)
+- [Installation](#-installation)
 
-Features Implemented
-Data Preprocessing Pipeline:
 
-Text normalization (lowercase, noise removal).
+---
 
-Tokenization and Stopword removal.
+## 📖 Project Overview
 
-Lemmatization using NLTK to standardize vocabulary.
+Handling a high volume of support tickets manually is slow and error-prone. This project leverages Natural Language Processing (NLP) to:
+1.  **Classify Issue Types**: Automatically categories tickets (e.g., *Billing, Technical, Hardware*).
+2.  **Predict Urgency**: Flags critical issues (e.g., *High, Medium, Low*).
+3.  **Extract Entities**: Identifies products, dates, and order IDs for quick context.
 
-Handling of missing values.
+---
 
-Feature Engineering:
+## ✨ Key Features
 
-TF-IDF Vectorization: Converts text into meaningful numerical features.
+* **Robust Preprocessing**: Includes text normalization, stopword removal, and lemmatization.
+* **Dual-Model Classification**: Uses **Random Forest** classifiers optimized for multi-task learning.
+* **Smart Feature Engineering**: Combines **TF-IDF** vectors with meta-features like *Ticket Length* and *Sentiment Analysis* (VADER).
+* **Entity Extraction**: Hybrid rule-based system (Regex + Keywords) to find:
+    * Products (e.g., "Laptop", "Router")
+    * Dates (e.g., "2023-10-12", "yesterday")
+    * Complaint Keywords (e.g., "broken", "fail")
+* **Interactive Web UI**: Built with **Gradio** for real-time testing and demoing.
 
-Meta-Features: Calculates "Ticket Length" and "Sentiment Score" (using VADER) to improve urgency detection.
+---
 
-Multi-Task Classification:
+## ⚙️ Installation
 
-Two separate Random Forest Classifiers trained on a shared feature set to predict Issue Type and Urgency simultaneously.
+1.  **Clone the Repository**
+    ```bash
+    [git clone [https://github.com/your-username/ticket-classifier.git](https://github.com/your-username/ticket-classifier.git)
+    cd ticket-classifier](https://github.com/Geniusram/classifies-customer-support-tickets-.git)
+    ```
 
-Handles class imbalance using weighted parameters.
+2.  **Set up Virtual Environment (Optional but Recommended)**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
-Entity Extraction:
+3.  **Install Dependencies**
+    ```bash
+    pip install pandas numpy scikit-learn nltk gradio openpyxl scipy
+    ```
 
-Hybrid approach using Regex (for dates and IDs) and Keyword Matching (for products and complaint types).
+4.  **Download NLTK Data**
+    Run the included setup script or execute:
+    ```python
+    import nltk
+    nltk.download(['punkt', 'stopwords', 'wordnet', 'omw-1.4', 'vader_lexicon'])
+    ```
 
-Interactive UI:
+---
 
-A Gradio web interface allows users to test the model in real-time.
-
-Installation
-Prerequisites
-Python 3.8 or higher
-
-pip (Python package manager)
-
-1. Clone the Repository
-Bash
-
-git clone https://github.com/yourusername/ticket-classifier.git
-cd ticket-classifier
-2. Install Dependencies
-Install the required Python libraries:
-
-Bash
-
-pip install pandas numpy scikit-learn nltk gradio openpyxl scipy
-3. Download NLTK Data
-The project requires specific NLTK corpora. You can download them by running this Python command once:
-
-Python
-
-import nltk
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-nltk.download('omw-1.4')
-nltk.download('vader_lexicon')
+## Run python code 
+```bash
+gradio_code.py
+```
+**or**
+Double click gradio_code.py
+---
+## Run jupyter notebook
+Run each cells
